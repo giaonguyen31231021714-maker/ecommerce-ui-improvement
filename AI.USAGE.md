@@ -11,11 +11,11 @@
 
 ## 3. Prompt đã sử dụng
 1. **Prompt 1 (Khảo sát & Phân tích UX):**
-   > *"Tôi đang khảo sát website: Hasaki Beauty & Clinic - https://hasaki.vn/. Hãy giúp tôi lập bảng phân tích các khu vực: Trang chủ, Danh mục sản phẩm, Chi tiết sản phẩm, Tìm kiếm, Giỏ hàng..."*
+   "Tôi đang khảo sát website: Hasaki Beauty & Clinic - https://hasaki.vn/. Hãy giúp tôi lập bảng phân tích các khu vực: Trang chủ, Danh mục sản phẩm, Chi tiết sản phẩm, Tìm kiếm, Giỏ hàng..."
 2. **Prompt 2 (Đề xuất phương án cải tiến Trang chủ):**
-   > *"Tôi muốn cải tiến khu vực Trang chủ vì mật độ thông tin/banner quá dày gây nhiễu thị giác... Hãy đề xuất: Bố cục, Thành phần HTML, Cách tổ chức CSS, Cách hiển thị Responsive, Usability checklist..."*
+   "Tôi muốn cải tiến khu vực Trang chủ vì mật độ thông tin/banner quá dày gây nhiễu thị giác... Hãy đề xuất: Bố cục, Thành phần HTML, Cách tổ chức CSS, Cách hiển thị Responsive, Usability checklist..."
 3. **Prompt 3 (Sinh mã nguồn HTML/CSS/JS):**
-   > *"Dựa trên phương án đã thống nhất, hãy tạo một trang giao diện thương mại điện tử bằng HTML5 và CSS3... Giải thích cách chạy trang web và những phần tôi cần kiểm tra."*
+   "Dựa trên phương án đã thống nhất, hãy tạo một trang giao diện thương mại điện tử bằng HTML5 và CSS3... Giải thích cách chạy trang web và những phần tôi cần kiểm tra."*
 
 
 ## 4. Kết quả AI đề xuất

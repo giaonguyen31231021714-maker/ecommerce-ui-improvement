@@ -1,5 +1,5 @@
 ## 1. Giới thiệu
-Dự án cải tiến giao diện trang chủ (Homepage) cho website thương mại điện tử chuyên về mỹ phẩm và chăm sóc cá nhân. Mẫu thiết kế tập trung tối ưu hóa trải nghiệm người dùng (UX), nâng cao phân cấp thị giác (Visual Hierarchy), giảm tải nhiễu thông tin (Cognitive Overload) và đảm bảo tính tương thích cao trên mọi thiết bị di động.
+Dự án cải tiến giao diện trang chủ (Homepage) cho website thương mại điện tử chuyên về mỹ phẩm và chăm sóc cá nhân. Mẫu thiết kế tập trung tối ưu hóa trải nghiệm người dùng (UX), nâng cao phân cấp thị giác, giảm tải nhiễu thông tin và đảm bảo tính tương thích cao trên mọi thiết bị di động.
 
 ## 2. Website tham khảo
 - **Tên website:** Hasaki Beauty & Clinic
@@ -22,7 +22,7 @@ Mở file `index.html` bằng trình duyệt web bất kỳ (Google Chrome, Micr
 ## 6. Cải tiến đã thực hiện
 - **Vấn đề ban đầu:** Giao diện trang chủ ban đầu có mật độ banner, hình ảnh và thông tin quảng cáo quá dày đặc, gây rối mắt (Cognitive Overload), khiến người dùng khó nhận diện chương trình ưu đãi chính và thao tác phức tạp khi dùng trên điện thoại.
 - **Thay đổi đã thực hiện:**
-  - Quy hoạch lại bố cục Hero Banner thành dạng "1 Hero Banner chủ đạo + 6 Lối vào nhanh" giúp thu hút thị giác ngay từ 3 giây đầu.
+  - Chỉnh sửa lại bố cục Hero Banner thành dạng "1 Hero Banner chủ đạo + 6 Lối vào nhanh" giúp thu hút khách hàng ngay từ 3 giây đầu.
   - Áp dụng **Card Layout** kết hợp khoảng trống âm (Negative Space) để nhóm rõ ràng từng phân khu thông tin.
   - Chuyển đổi lưới sản phẩm dài trên mobile thành dạng **cuộn ngang (Horizontal Snap Scroll)** cho khối Flash Sale và dạng **Tab điều hướng** cho danh mục gợi ý, giảm bớt chiều dài cuộn trang.
   - Tích hợp thanh điều hướng dưới (**Bottom Navigation Bar**) chuẩn UX Mobile App cho thao tác một tay trên điện thoại.
