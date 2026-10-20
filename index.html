@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hasaki Beauty & Clinic - Mỹ Phẩm Chính Hãng & Dịch Vụ Spa</title>
+  
+  <style>
+    /* ==========================================================================
+       1. CSS VARIABLES (DESIGN TOKENS) & RESET
+       ========================================================================== */
+    :root {
+      /* Brand Colors */
+      --primary-color: #088d4d;
+      --primary-hover: #066d3b;
+      --primary-light: #e8f5e9;
+      --secondary-color: #00acc1;
+      
+      /* Status & Accent Colors */
+      --danger-color: #d32f2f;
+      --accent-color: #f59e0b;
+      --badge-express: #ff9800;
+      
+      /* Neutral Colors */
+      --text-main: #1a202c;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      --bg-main: #f4f6f8;
+      --bg-surface: #ffffff;
+      --border-color: #e2e8f0;
+      
+      /* Elevation & Shadows */
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+      
+      /* Spacing & Radius */
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      
+      --spacing-xs: 4px;
+      --spacing-sm: 8px;
+      --spacing-md: 16px;
+      --spacing-lg: 24px;
+      --spacing-xl: 32px;
+      
+      /* Transitions */
+      --transition-fast: all 0.2s ease;
+      --transition-normal: all 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.5;
+      font-size: 14px;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 70px; /* Space for Mobile Bottom Nav */
+    }
+
+    @media (min-width: 769px) {
+      body {
+        padding-bottom: 0;
+      }
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-md);
+    }
+
+    /* ==========================================================================
+       2. TOPBAR & HEADER (BEM)
+       ========================================================================== */
+    .topbar {
+      background-color: #055b32;
+      color: #ffffff;
+      font-size: 12px;
+      padding: 6px 0;
+      display: none;
+    }
+
+    @media (min-width: 769px) {
+      .topbar {
+        display: block;
+      }
+    }
+
+    .topbar__container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .topbar__list {
+      display: flex;
+      gap: var(--spacing-lg);
+      list-style: none;
+    }
+
+    .topbar__item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .topbar__item svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
+    .header {
+      background-color: var(--primary-color);
+      color: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header__main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--spacing-sm) 0;
+      gap: var(--spacing-md);
+    }
+
+    .header__logo {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      white-space: nowrap;
+    }
+
+    .header__logo-badge {
+      background-color: #ffffff;
+      color: var(--primary-color);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: var(--radius-sm);
+      text-transform: uppercase;
+    }
+
+    .header__search {
+      flex: 1;
+      max-width: 600px;
+      position: relative;
+    }
+
+    .header__search-form {
+      display: flex;
+      background: #ffffff;
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .header__search-input {
+      flex: 1;
+      border: none;
+      padding: 10px 16px;
+      font-size: 14px;
+      outline: none;
+      color: var(--text-main);
+    }
+
+    .header__search-btn {
+      background-color: var(--accent-color);
+      color: #ffffff;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-fast);
+    }
+
+    .header__search-btn:hover {
+      background-color: #e08e0b;
+    }
+
+    .header__search-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: #ffffff;
+    }
+
+    .header__express-tag {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    @media (min-width: 1024px) {
+      .header__express-tag {
+        display: flex;
+      }
+    }
+
+    .header__actions {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+
+    .header__action-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 11px;
+      color: #ffffff;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .header__action-item svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+
+    .header__action-badge {
+      position: absolute;
+      top: -4px;
+      right: 2px;
+      background-color: var(--danger-color);
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 700;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--primary-color);
+    }
+
+    /* ==========================================================================
+       3. HERO SECTION & QUICK LINKS
+       ========================================================================== */
+    .hero {
+      padding: var(--spacing-md) 0;
+    }
+
+    .hero__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+
+    @media (min-width: 1024px) {
+      .hero__grid {
+        grid-template-columns: 2fr 1fr;
+      }
+    }
+
+    .hero__banner {
+      background: linear-gradient(135deg, #088d4d 0%, #00acc1 100%);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-lg);
+      color: #ffffff;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero__banner-subtitle {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.9;
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .hero__banner-title {
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .hero__banner-desc {
+      font-size: 14px;
+      opacity: 0.9;
+      margin-bottom: var(--spacing-md);
+      max-width: 80%;
+    }
+
+    .hero__banner-btn {
+      display: inline-block;
+      align-self: flex-start;
+      background-color: #ffffff;
+      color: var(--primary-color);
+      padding: 8px 20px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: 13px;
+      transition: var(--transition-fast);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero__banner-btn:hover {
+      background-color: #f8fafc;
+      transform: translateY(-2px);
+    }
+
+    /* Decorative Circle */
+    .hero__banner::after {
+      content: "";
+      position: absolute;
+      right: -30px;
+      bottom: -30px;
+      width: 180px;
+      height: 180px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .quick-links {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-sm);
+    }
+
+    @media (min-width: 600px) and (max-width: 1023px) {
+      .quick-links {
+        grid-template-columns: repeat(6, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .quick-links {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .quick-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-sm);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 6px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-color);
+      transition: var(--transition-fast);
+    }
+
+    .quick-card:hover {
+      border-color: var(--primary-color);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .quick-card__icon {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-md);
+      background-color: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-color);
+    }
+
+    .quick-card__icon svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .quick-card__title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    /* ==========================================================================
+       4. FLASH SALE SECTION (CONTAINED & HORIZONTAL SCROLL ON MOBILE)
+       ========================================================================== */
+    .flash-sale {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-md);
+      margin-bottom: var(--spacing-lg);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .flash-sale__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--spacing-md);
+      padding-bottom: var(--spacing-sm);
+      border-bottom: 2px solid var(--bg-main);
+      flex-wrap: wrap;
+      gap: var(--spacing-sm);
+    }
+
+    .flash-sale__title-group {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    .flash-sale__icon {
+      color: var(--danger-color);
+      display: flex;
+      align-items: center;
+    }
+
+    .flash-sale__icon svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+
+    .flash-sale__title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--danger-color);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .flash-sale__timer {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .flash-sale__timer-box {
+      background-color: var(--text-main);
+      color: #ffffff;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-family: monospace;
+      font-size: 13px;
+    }
+
+    .flash-sale__link {
+      color: var(--primary-color);
+      font-weight: 600;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .flash-sale__grid {
+      display: flex;
+      gap: var(--spacing-md);
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: var(--spacing-xs);
+      -webkit-overflow-scrolling: touch;
+    }
+
+    @media (min-width: 1024px) {
+      .flash-sale__grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        overflow-x: visible;
+      }
+    }
+
+    /* Product Card BEM */
+    .product-card {
+      flex: 0 0 200px; /* Width on mobile horizontal scroll */
+      scroll-snap-align: start;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-sm);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: var(--transition-fast);
+    }
+
+    @media (min-width: 1024px) {
+      .product-card {
+        flex: initial;
+      }
+    }
+
+    .product-card:hover {
+      border-color: var(--primary-color);
+      box-shadow: var(--shadow-md);
+    }
+
+    .product-card__thumb {
+      position: relative;
+      width: 100%;
+      padding-top: 100%; /* 1:1 Aspect Ratio */
+      background-color: #f8fafc;
+      border-radius: var(--radius-sm);
+      margin-bottom: var(--spacing-sm);
+      overflow: hidden;
+    }
+
+    .product-card__thumb img,
+    .product-card__thumb svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-card__badges {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      z-index: 2;
+    }
+
+    .product-card__badge {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: var(--radius-sm);
+      color: #ffffff;
+      width: fit-content;
+    }
+
+    .product-card__badge--discount {
+      background-color: var(--danger-color);
+    }
+
+    .product-card__badge--express {
+      background-color: var(--badge-express);
+    }
+
+    .product-card__brand {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .product-card__title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-main);
+      line-height: 1.3;
+      height: 34px; /* Max 2 lines */
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .product-card__rating {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      color: var(--accent-color);
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .product-card__stars {
+      display: flex;
+    }
+
+    .product-card__stars svg {
+      width: 12px;
+      height: 12px;
+      fill: currentColor;
+    }
+
+    .product-card__price-box {
+      margin-top: auto;
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .product-card__price--current {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--danger-color);
+    }
+
+    .product-card__price--old {
+      font-size: 11px;
+      color: var(--text-light);
+      text-decoration: line-through;
+      margin-left: 4px;
+    }
+
+    .product-card__progress {
+      width: 100%;
+      height: 12px;
+      background-color: #f1f5f9;
+      border-radius: var(--radius-full);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-card__progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #ff9800, #d32f2f);
+      border-radius: var(--radius-full);
+    }
+
+    .product-card__progress-text {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      font-size: 9px;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-transform: uppercase;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+    }
+
+    /* ==========================================================================
+       5. CATEGORY & SUGGESTED TAB SECTION
+       ========================================================================== */
+    .suggested {
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .suggested__header {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-md);
+    }
+
+    @media (min-width: 769px) {
+      .suggested__header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .suggested__title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .tabs {
+      display: flex;
+      gap: var(--spacing-xs);
+      overflow-x: auto;
+      padding-bottom: 4px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .tabs__item {
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      background-color: var(--bg-surface);
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 13px;
+      white-space: nowrap;
+      border: 1px solid var(--border-color);
+      transition: var(--transition-fast);
+    }
+
+    .tabs__item:hover {
+      color: var(--primary-color);
+    }
+
+    .tabs__item--active {
+      background-color: var(--primary-color);
+      color: #ffffff;
+      border-color: var(--primary-color);
+    }
+
+    .tabs__item--active:hover {
+      color: #ffffff;
+    }
+
+    .suggested__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-sm);
+    }
+
+    @media (min-width: 600px) {
+      .suggested__grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-md);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .suggested__grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+
+    /* ==========================================================================
+       6. TRUST SIGNALS SECTION
+       ========================================================================== */
+    .trust {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-lg);
+      margin-bottom: var(--spacing-xl);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .trust__grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: var(--spacing-md);
+    }
+
+    @media (min-width: 600px) {
+      .trust__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .trust__grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .trust-card {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    .trust-card__icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background-color: var(--primary-light);
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .trust-card__icon svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    .trust-card__title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .trust-card__desc {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       7. FOOTER
+       ========================================================================== */
+    .footer {
+      background-color: #ffffff;
+      border-top: 1px solid var(--border-color);
+      padding-top: var(--spacing-xl);
+      color: var(--text-main);
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-xl);
+    }
+
+    @media (min-width: 600px) {
+      .footer__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .footer__grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .footer__col-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: var(--spacing-md);
+      color: var(--text-main);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .footer__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer__list-item a {
+      color: var(--text-muted);
+      font-size: 13px;
+      transition: var(--transition-fast);
+    }
+
+    .footer__list-item a:hover {
+      color: var(--primary-color);
+    }
+
+    .footer__payments {
+      display: flex;
+      gap: var(--spacing-sm);
+      flex-wrap: wrap;
+      margin-top: var(--spacing-sm);
+    }
+
+    .footer__payment-badge {
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 4px 10px;
+      font-weight: 700;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .footer__bottom {
+      background-color: #f8fafc;
+      border-top: 1px solid var(--border-color);
+      padding: var(--spacing-md) 0;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       8. MOBILE BOTTOM NAVIGATION BAR
+       ========================================================================== */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #ffffff;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 6px 0;
+      z-index: 999;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+    }
+
+    @media (min-width: 769px) {
+      .bottom-nav {
+        display: none;
+      }
+    }
+
+    .bottom-nav__item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 10px;
+      color: var(--text-muted);
+      gap: 2px;
+      font-weight: 500;
+    }
+
+    .bottom-nav__item svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+
+    .bottom-nav__item--active {
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+
+    .bottom-nav__item--active svg {
+      stroke: var(--primary-color);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR (DESKTOP ONLY) -->
+  <aside class="topbar">
+    <div class="container topbar__container">
+      <ul class="topbar__list">
+        <li class="topbar__item">
+          <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+          <strong>Hasaki Giao 2H:</strong> Miễn phí giao hàng từ 90K
+        </li>
+        <li class="topbar__item">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          Hệ thống 140+ Cửa hàng toàn quốc
+        </li>
+      </ul>
+      <ul class="topbar__list">
+        <li class="topbar__item">Hotline: <strong>1800 6324</strong> (Miễn phí)</li>
+        <li class="topbar__item">Đặt lịch Spa / Clinic</li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header__main">
+      <!-- Logo -->
+      <a href="#" class="header__logo">
+        HASAKI
+        <span class="header__logo-badge">Beauty</span>
+      </a>
+
+      <!-- Search Box -->
+      <div class="header__search">
+        <form class="header__search-form" action="#" onsubmit="return false;">
+          <input type="text" class="header__search-input" placeholder="Tìm kem chống nắng, serum, thương hiệu..." aria-label="Tìm kiếm sản phẩm">
+          <button type="submit" class="header__search-btn" aria-label="Nút tìm kiếm">
+            <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- Express Tag (Desktop) -->
+      <div class="header__express-tag">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#ff9800"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        Giao 2H
+      </div>
+
+      <!-- User Actions -->
+      <div class="header__actions">
+        <div class="header__action-item">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>Tài khoản</span>
+        </div>
+        <div class="header__action-item">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span>Giỏ hàng</span>
+          <span class="header__action-badge">3</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="container">
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="hero__grid">
+        <!-- Main Banner -->
+        <article class="hero__banner">
+          <span class="hero__banner-subtitle">Chương Trình Độc Quyền</span>
+          <h1 class="hero__banner-title">MEGA SALE MỸ PHẨM<br>CHÍNH HÃNG DỊU NHẸ</h1>
+          <p class="hero__banner-desc">Ưu đãi lên đến 50% cho các dòng Serum, Kem dưỡng & Kem chống nắng bán chạy nhất tháng.</p>
+          <a href="#flash-sale" class="hero__banner-btn">Khám Phá Ngay</a>
+        </article>
+
+        <!-- Quick Links (6 Icon Cards) -->
+        <div class="quick-links">
+          <a href="#" class="quick-card">
+            <div class="quick-card__icon">
+              <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
+            </div>
+            <span class="quick-card__title">Đặt Lịch Spa</span>
+          </a>
+
+          <a href="#flash-sale" class="quick-card">
+            <div class="quick-card__icon" style="background-color: #ffebee; color: var(--danger-color);">
+              <svg viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
+            </div>
+            <span class="quick-card__title">Flash Sale</span>
+          </a>
+
+          <a href="#" class="quick-card">
+            <div class="quick-card__icon">
+              <svg viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
+            </div>
+            <span class="quick-card__title">Voucher 50K</span>
+          </a>
+
+          <a href="#" class="quick-card">
+            <div class="quick-card__icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z"/></svg>
+            </div>
+            <span class="quick-card__title">Hàng Mới Ve</span>
+          </a>
+
+          <a href="#" class="quick-card">
+            <div class="quick-card__icon">
+              <svg viewBox="0 0 24 24"><path d="M16 6l1.6 3.2 3.6.5-2.6 2.5.6 3.6-3.2-1.7-3.2 1.7.6-3.6-2.6-2.5 3.6-.5zM9 12l-1.6-3.2-3.6-.5 2.6-2.5-.6-3.6 3.2 1.7 3.2-1.7-.6 3.6 2.6 2.5-3.6.5z"/></svg>
+            </div>
+            <span class="quick-card__title">Top Bán Chạy</span>
+          </a>
+
+          <a href="#" class="quick-card">
+            <div class="quick-card__icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-2h2v2zm1.07-7.75l-.9.92C12.45 11.9 12 12.5 12 14h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+            </div>
+            <span class="quick-card__title">Tư Vấn Da</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLASH SALE SECTION -->
+    <section class="flash-sale" id="flash-sale">
+      <div class="flash-sale__header">
+        <div class="flash-sale__title-group">
+          <span class="flash-sale__icon">
+            <svg viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
+          </span>
+          <h2 class="flash-sale__title">FLASH SALE GIỜ VÀNG</h2>
+          <div class="flash-sale__timer">
+            <span>Kết thúc trong</span>
+            <span class="flash-sale__timer-box" id="timer-hours">02</span>:
+            <span class="flash-sale__timer-box" id="timer-mins">45</span>:
+            <span class="flash-sale__timer-box" id="timer-secs">12</span>
+          </div>
+        </div>
+        <a href="#" class="flash-sale__link">Xem tất cả &rsaquo;</a>
+      </div>
+
+      <!-- Product Cards Container (Scroll Horizontal on Mobile) -->
+      <div class="flash-sale__grid">
+        
+        <!-- Product 1 -->
+        <article class="product-card">
+          <div class="product-card__thumb">
+            <div class="product-card__badges">
+              <span class="product-card__badge product-card__badge--discount">-35%</span>
+              <span class="product-card__badge product-card__badge--express">2H</span>
+            </div>
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="100" height="100" fill="#f1f5f9"/>
+              <rect x="35" y="20" width="30" height="60" rx="6" fill="#088d4d" opacity="0.8"/>
+              <rect x="42" y="12" width="16" height="8" rx="2" fill="#334155"/>
+              <text x="50" y="55" font-size="8" fill="white" text-anchor="middle" font-weight="bold">SERUM</text>
+            </svg>
+          </div>
+          <span class="product-card__brand">La Roche-Posay</span>
+          <h3 class="product-card__title">Serum Giảm Mụn & Thâm Dành Cho Da Dầu Hyalu B5 30ml</h3>
+          <div class="product-card__rating">
+            <div class="product-card__stars">
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+            <span>(128)</span>
+          </div>
+          <div class="product-card__price-box">
+            <span class="product-card__price--current">389.000đ</span>
+            <span class="product-card__price--old">598.000đ</span>
+          </div>
+          <div class="product-card__progress">
+            <div class="product-card__progress-bar" style="width: 85%;"></div>
+            <span class="product-card__progress-text">Đã bán 85%</span>
+          </div>
+        </article>
+
+        <!-- Product 2 -->
+        <article class="product-card">
+          <div class="product-card__thumb">
+            <div class="product-card__badges">
+              <span class="product-card__badge product-card__badge--discount">-40%</span>
+              <span class="product-card__badge product-card__badge--express">2H</span>
+            </div>
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="100" height="100" fill="#f1f5f9"/>
+              <circle cx="50" cy="55" r="25" fill="#f59e0b" opacity="0.8"/>
+              <rect x="45" y="18" width="10" height="12" fill="#334155"/>
+              <text x="50" y="58" font-size="7" fill="white" text-anchor="middle" font-weight="bold">CREAM</text>
+            </svg>
+          </div>
+          <span class="product-card__brand">Vichy</span>
+          <h3 class="product-card__title">Kem Chống Nắng Kiểm Soát Dầu Không Màu SPF50+ 50ml</h3>
+          <div class="product-card__rating">
+            <div class="product-card__stars">
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+            <span>(95)</span>
+          </div>
+          <div class="product-card__price-box">
+            <span class="product-card__price--current">299.000đ</span>
+            <span class="product-card__price--old">500.000đ</span>
+          </div>
+          <div class="product-card__progress">
+            <div class="product-card__progress-bar" style="width: 60%;"></div>
+            <span class="product-card__progress-text">Đã bán 60%</span>
+          </div>
+        </article>
+
+        <!-- Product 3 -->
+        <article class="product-card">
+          <div class="product-card__thumb">
+            <div class="product-card__badges">
+              <span class="product-card__badge product-card__badge--discount">-25%</span>
+            </div>
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="100" height="100" fill="#f1f5f9"/>
+              <rect x="38" y="25" width="24" height="50" rx="4" fill="#00acc1" opacity="0.8"/>
+              <rect x="42" y="18" width="16" height="7" fill="#334155"/>
+              <text x="50" y="52" font-size="7" fill="white" text-anchor="middle" font-weight="bold">CLEANSER</text>
+            </svg>
+          </div>
+          <span class="product-card__brand">CeraVe</span>
+          <h3 class="product-card__title">Sữa Rửa Mặt Cho Da Dầu Mụn Foaming Facial Cleanser 473ml</h3>
+          <div class="product-card__rating">
+            <div class="product-card__stars">
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+            <span>(210)</span>
+          </div>
+          <div class="product-card__price-box">
+            <span class="product-card__price--current">345.000đ</span>
+            <span class="product-card__price--old">460.000đ</span>
+          </div>
+          <div class="product-card__progress">
+            <div class="product-card__progress-bar" style="width: 90%;"></div>
+            <span class="product-card__progress-text">Sắp cháy hàng</span>
+          </div>
+        </article>
+
+        <!-- Product 4 -->
+        <article class="product-card">
+          <div class="product-card__thumb">
+            <div class="product-card__badges">
+              <span class="product-card__badge product-card__badge--discount">-50%</span>
+              <span class="product-card__badge product-card__badge--express">2H</span>
+            </div>
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="100" height="100" fill="#f1f5f9"/>
+              <path d="M30 40 C30 25, 70 25, 70 40 L65 80 L35 80 Z" fill="#ec4899" opacity="0.8"/>
+              <circle cx="50" cy="30" r="6" fill="#334155"/>
+              <text x="50" y="60" font-size="7" fill="white" text-anchor="middle" font-weight="bold">TONER</text>
+            </svg>
+          </div>
+          <span class="product-card__brand">Klairs</span>
+          <h3 class="product-card__title">Nước Hoa Hồng Dưỡng Âm Không Cồn Supple Preparation 180ml</h3>
+          <div class="product-card__rating">
+            <div class="product-card__stars">
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+            <span>(182)</span>
+          </div>
+          <div class="product-card__price-box">
+            <span class="product-card__price--current">210.000đ</span>
+            <span class="product-card__price--old">420.000đ</span>
+          </div>
+          <div class="product-card__progress">
+            <div class="product-card__progress-bar" style="width: 45%;"></div>
+            <span class="product-card__progress-text">Đã bán 45%</span>
+          </div>
+        </article>
+
+        <!-- Product 5 -->
+        <article class="product-card">
+          <div class="product-card__thumb">
+            <div class="product-card__badges">
+              <span class="product-card__badge product-card__badge--discount">-20%</span>
+              <span class="product-card__badge product-card__badge--express">2H</span>
+            </div>
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="100" height="100" fill="#f1f5f9"/>
+              <ellipse cx="50" cy="55" rx="20" ry="25" fill="#8b5cf6" opacity="0.8"/>
+              <rect x="44" y="20" width="12" height="10" fill="#334155"/>
+              <text x="50" y="58" font-size="7" fill="white" text-anchor="middle" font-weight="bold">MAScara</text>
+            </svg>
+          </div>
+          <span class="product-card__brand">Maybelline</span>
+          <h3 class="product-card__title">Mascara Dày Và Cong Mi Chống Nước Lash Sensational 10ml</h3>
+          <div class="product-card__rating">
+            <div class="product-card__stars">
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+            <span>(340)</span>
+          </div>
+          <div class="product-card__price-box">
+            <span class="product-card__price--current">168.000đ</span>
+            <span class="product-card__price--old">210.000đ</span>
+          </div>
+          <div class="product-card__progress">
+            <div class="product-card__progress-bar" style="width: 72%;"></div>
+            <span class="product-card__progress-text">Đã bán 72%</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SUGGESTED PRODUCTS WITH TAB LAYOUT -->
+    <section class="suggested">
+      <div class="suggested__header">
+        <h2 class="suggested__title">GỢI Ý DÀNH CHO BẠN</h2>
+        <div class="tabs" role="tablist">
+          <button class="tabs__item tabs__item--active" role="tab" data-target="grid-skincare">Chăm Sóc Da Mặt</button>
+          <button class="tabs__item" role="tab" data-target="grid-makeup">Trang Điểm</button>
+          <button class="tabs__item" role="tab" data-target="grid-bodycare">Chăm Sóc Cơ Thể</button>
+          <button class="tabs__item" role="tab" data-target="grid-perfume">Nước Hoa</button>
+        </div>
+      </div>
+
+      <!-- Tab Content Grid -->
+      <div class="suggested__grid" id="grid-skincare">
+        
+        <!-- Product Item 1 -->
+        <article class="product-card">
+          <div class="product-card__thumb">
+            <div class="product-card__badges">
+              <span class="product-card__badge product-card__badge--express">2H</span>
+            </div>
+            <svg viewBox="0 0 100 100" fill="none"><rect width="100" height="100" fill="#e2e8f0"/><circle cx="50" cy="50" r="30" fill="#088d4d"/><text x="50" y="54" font-size="8" fill="white" text-anchor="middle">SERUM</text></svg>
+          </div>
+          <span class="product-card__brand">Bioderma</span>
+          <h3 class="product-card__title">Nước Tẩy Trang Lành Tính Cho Da Sensibio H2O 500ml</h3>
+          <div class="product-card__rating">
+            <div class="product-card__stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+            <span>5.0 (420)</span>
+          </div>
+          <div class="product-card__price-box">
+            <span class="product-card__price--current">425.000đ</span>
+          </div>
+        </article>
+
+        <!-- Product Item 2 -->
+        <article class="product-card">
+          <div class="product-card__thumb">
+            <div class="product-card__badges">
+              <span class="product-card__badge product-card__badge--discount">-18%</span>
+            </div>
+            <svg viewBox="0 0 100 100" fill="none"><rect width="100" height="100" fill="#e2e8f0"/><rect x="30" y="25" width="40" height="50" rx="8" fill="#f59e0b"/><text x="50" y="54" font-size="8" fill="white" text-anchor="middle">LOTION</text></svg>
+          </div>
+          <span class="product-card__brand">Hada Labo</span>
+          <h3 class="product-card__title">Dung Dịch Dưỡng Ẩm Chuyên Sức Advanced Nourish 170ml</h3>
+          <div class="product-card__rating">
+            <div class="product-card__stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+            <span>4.9 (180)</span>
+          </div>
+          <div class="product-card__price-box">
+            <span class="product-card__price--current">179.000đ</span>
+            <span class="product-card__price--old">219.000đ</span>
+          </div>
+        </article>
+
+        <!-- Product Item 3 -->
+        <article class="product-card">
+          <div class="product-card__thumb">
+            <div class="product-card__badges">
+              <span class="product-card__badge product-card__badge--express">2H</span>
+            </div>
+            <svg viewBox="0 0 100 100" fill="none"><rect width="100" height="100" fill="#e2e8f0"/><path d="M25 35 L75 35 L65 80 L35 80 Z" fill="#00acc1"/><text x="50" y="55" font-size="8" fill="white" text-anchor="middle">GEL</text></svg>
+          </div>
+          <span class="product-card__brand">Simple</span>
+          <h3 class="product-card__title">Gel Rửa Mặt Rửa Sạch Sâu Sáng Da Kind To Skin 150ml</h3>
+          <div class="product-card__rating">
+            <div class="product-card__stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+            <span>4.8 (89)</span>
+          </div>
+          <div class="product-card__price-box">
+            <span class="product-card__price--current">99.000đ</span>
+          </div>
+        </article>
+
+        <!-- Product Item 4 -->
+        <article class="product-card">
+          <div class="product-card__thumb">
+            <svg viewBox="0 0 100 100" fill="none"><rect width="100" height="100" fill="#e2e8f0"/><rect x="35" y="20" width="30" height="60" rx="15" fill="#ec4899"/><text x="50" y="54" font-size="8" fill="white" text-anchor="middle">MASK</text></svg>
+          </div>
+          <span class="product-card__brand">Lululun</span>
+          <h3 class="product-card__title">Mặt Nạ Giấy Dưỡng Ẩm Chuyên Sâu Hộp 7 Miếng</h3>
+          <div class="product-card__rating">
+            <div class="product-card__stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+            <span>4.9 (76)</span>
+          </div>
+          <div class="product-card__price-box">
+            <span class="product-card__price--current">135.000đ</span>
+          </div>
+        </article>
+
+        <!-- Product Item 5 -->
+        <article class="product-card">
+          <div class="product-card__thumb">
+            <div class="product-card__badges">
+              <span class="product-card__badge product-card__badge--discount">-15%</span>
+              <span class="product-card__badge product-card__badge--express">2H</span>
+            </div>
+            <svg viewBox="0 0 100 100" fill="none"><rect width="100" height="100" fill="#e2e8f0"/><circle cx="50" cy="50" r="28" fill="#8b5cf6"/><text x="50" y="54" font-size="8" fill="white" text-anchor="middle">SUN</text></svg>
+          </div>
+          <span class="product-card__brand">Anessa</span>
+          <h3 class="product-card__title">Sữa Chống Nắng Dưỡng Đẹp Da Mịn Màng Perfect UV 60ml</h3>
+          <div class="product-card__rating">
+            <div class="product-card__stars"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></div>
+            <span>5.0 (530)</span>
+          </div>
+          <div class="product-card__price-box">
+            <span class="product-card__price--current">525.000đ</span>
+            <span class="product-card__price--old">620.000đ</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- TRUST SIGNALS SECTION -->
+    <section class="trust">
+      <div class="trust__grid">
+        <div class="trust-card">
+          <div class="trust-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+          </div>
+          <div>
+            <h3 class="trust-card__title">100% Chính Hãng</h3>
+            <p class="trust-card__desc">Bồi hoàn 200% nếu phát hiện hàng giả</p>
+          </div>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div>
+            <h3 class="trust-card__title">Giao Nhanh 2H</h3>
+            <p class="trust-card__desc">Nhận hàng ngay trong ngày tại TP.HCM & Hà Nội</p>
+          </div>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          </div>
+          <div>
+            <h3 class="trust-card__title">Clinic & Spa Chuẩn Y Khoa</h3>
+            <p class="trust-card__desc">Bác sĩ soi da & tư vấn liệu trình miễn phí</p>
+          </div>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-card__icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+          </div>
+          <div>
+            <h3 class="trust-card__title">Đổi Trả 14 Ngày</h3>
+            <p class="trust-card__desc">Đổi trả dễ dàng nếu sản phẩm bị lỗi do NSX</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <h4 class="footer__col-title">Hỗ Trợ Khách Hàng</h4>
+        <ul class="footer__list">
+          <li class="footer__list-item"><a href="#">Hotline: 1800 6324 (Miễn phí)</a></li>
+          <li class="footer__list-item"><a href="#">Hướng dẫn đặt hàng</a></li>
+          <li class="footer__list-item"><a href="#">Chính sách giao hàng 2H</a></li>
+          <li class="footer__list-item"><a href="#">Chính sách đổi trả & hoàn tiền</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer__col-title">Về Hasaki Beauty</h4>
+        <ul class="footer__list">
+          <li class="footer__list-item"><a href="#">Giới thiệu Hasaki.vn</a></li>
+          <li class="footer__list-item"><a href="#">Hệ thống 140+ Cửa hàng</a></li>
+          <li class="footer__list-item"><a href="#">Dịch vụ Spa & Clinic</a></li>
+          <li class="footer__list-item"><a href="#">Tuyển dụng</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer__col-title">Thương Hiệu Nổi Bật</h4>
+        <ul class="footer__list">
+          <li class="footer__list-item"><a href="#">La Roche-Posay / Vichy</a></li>
+          <li class="footer__list-item"><a href="#">L'Oreal Paris / Maybelline</a></li>
+          <li class="footer__list-item"><a href="#">Bioderma / CeraVe</a></li>
+          <li class="footer__list-item"><a href="#">Klairs / Paula's Choice</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer__col-title">Thanh Toán & Kế Nối</h4>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">Chấp nhận các hình thức thanh toán:</p>
+        <div class="footer__payments">
+          <span class="footer__payment-badge">Momo</span>
+          <span class="footer__payment-badge">ZaloPay</span>
+          <span class="footer__payment-badge">Visa/Master</span>
+          <span class="footer__payment-badge">COD</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container">
+        <p>&copy; 2026 Hasaki Beauty & Clinic. Bản quyền thuộc về Bài Tập Môn Học Thiết Kế Web Thương Mại Điện Tử.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MOBILE BOTTOM NAVIGATION BAR -->
+  <nav class="bottom-nav">
+    <a href="#" class="bottom-nav__item bottom-nav__item--active">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span>Trang chủ</span>
+    </a>
+    <a href="#" class="bottom-nav__item">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      <span>Danh mục</span>
+    </a>
+    <a href="#flash-sale" class="bottom-nav__item">
+      <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      <span>Flash Sale</span>
+    </a>
+    <a href="#" class="bottom-nav__item">
+      <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10z"/></svg>
+      <span>Đặt Lịch</span>
+    </a>
+    <a href="#" class="bottom-nav__item">
+      <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <span>Giỏ hàng</span>
+    </a>
+  </nav>
+
+  <!-- JAVASCRIPT THUẦN (LIGHTWEIGHT INTERACTION) -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // 1. Bộ Đếm Ngược Flash Sale (Countdown Timer)
+      let hours = 2, mins = 45, secs = 12;
+      const elHours = document.getElementById("timer-hours");
+      const elMins = document.getElementById("timer-mins");
+      const elSecs = document.getElementById("timer-secs");
+
+      setInterval(function() {
+        if (secs > 0) {
+          secs--;
+        } else {
+          secs = 59;
+          if (mins > 0) {
+            mins--;
+          } else {
+            mins = 59;
+            if (hours > 0) {
+              hours--;
+            } else {
+              hours = 2; // Loop back for demo
+            }
+          }
+        }
+
+        if (elHours && elMins && elSecs) {
+          elHours.textContent = hours < 10 ? "0" + hours : hours;
+          elMins.textContent = mins < 10 ? "0" + mins : mins;
+          elSecs.textContent = secs < 10 ? "0" + secs : secs;
+        }
+      }, 1000);
+
+      // 2. Chuyển Đổi Tab Sản Phẩm Gợi Ý
+      const tabButtons = document.querySelectorAll(".tabs__item");
+      tabButtons.forEach(button => {
+        button.addEventListener("click", function() {
+          tabButtons.forEach(btn => btn.classList.remove("tabs__item--active"));
+          this.classList.add("tabs__item--active");
+        });
+      });
+    });
+  </script>
+</body>
+</html>
