@@ -39,5 +39,3 @@
   - Sử dụng `display: grid` kết hợp `grid-template-columns` để chia lưới sản phẩm tự động co giãn.
   - Sử dụng `display: flex` để căn chỉnh thành phần theo hàng ngang/dọc trong Header và Card sản phẩm.
 - **Biến CSS (CSS Variables):** Hiểu cách khai báo hệ thống màu sắc và khoảng cách tại khối `:root` để dễ dàng tái sử dụng và quản lý theme.
-- **Responsive Web Design (RWD):** Giải thích cách dùng `@media (max-width: 767px)` để ẩn/hiện thành phần và chuyển đổi từ dạng lưới đa cột sang dạng cuộn ngang (Scroll Snap) trên điện thoại.
-- **Quy tắc BEM:** Hiểu cách đặt tên class `.block__element--modifier` giữ cho CSS sạch sẽ, tránh đè mã không mong muốn.
